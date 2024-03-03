@@ -11,7 +11,8 @@ import '@rainbow-me/rainbowkit/styles.css';
 import { arbitrumGoerli, avalancheFuji } from 'wagmi/chains';
 import { publicProvider } from 'wagmi/providers/public';
 import { useEffect, useState } from 'react';
-
+import { jsonRpcProvider } from 'wagmi/providers/jsonRpc';
+import { shido } from '@/utils/constants';
 import { HuddleClient, HuddleProvider } from '@huddle01/react';
 
 const huddleClient = new HuddleClient({
@@ -24,8 +25,15 @@ const huddleClient = new HuddleClient({
 });
 
 const { chains, publicClient, webSocketPublicClient } = configureChains(
-  [avalancheFuji],
-  [publicProvider()]
+  [shido],
+  [
+    jsonRpcProvider({
+      rpc: (chain) => ({
+        http: `https://rpc-testnet-nodes.shidoscan.com`,
+      }),
+    }),
+    //publicProvider()
+  ]
 );
 
 const projectId = process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID as string;

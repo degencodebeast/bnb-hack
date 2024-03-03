@@ -1,1483 +1,1299 @@
 export const communityAbi = [
   {
-    inputs: [
+    "inputs": [
       {
-        internalType: 'address',
-        name: '_treasury',
-        type: 'address',
-      },
-      {
-        internalType: 'contract LinkTokenInterface',
-        name: '_link',
-        type: 'address',
-      },
-      {
-        internalType: 'address',
-        name: '_registrar',
-        type: 'address',
-      },
-      {
-        internalType: 'contract AutomationRegistryInterface',
-        name: '_registry',
-        type: 'address',
-      },
+        "internalType": "address",
+        "name": "_treasury",
+        "type": "address"
+      }
     ],
-    stateMutability: 'nonpayable',
-    type: 'constructor',
+    "stateMutability": "nonpayable",
+    "type": "constructor"
   },
   {
-    inputs: [],
-    name: 'AlreadyAMember',
-    type: 'error',
+    "inputs": [],
+    "name": "AlreadyAMember",
+    "type": "error"
   },
   {
-    inputs: [],
-    name: 'AlreadyANutrionist',
-    type: 'error',
+    "inputs": [],
+    "name": "AlreadyANutrionist",
+    "type": "error"
   },
   {
-    inputs: [],
-    name: 'InsufficientPayment',
-    type: 'error',
+    "inputs": [],
+    "name": "InsufficientPayment",
+    "type": "error"
   },
   {
-    inputs: [],
-    name: 'InvalidApplicant',
-    type: 'error',
+    "inputs": [],
+    "name": "InvalidApplicant",
+    "type": "error"
   },
   {
-    inputs: [],
-    name: 'InvalidDeadline',
-    type: 'error',
+    "inputs": [],
+    "name": "InvalidDeadline",
+    "type": "error"
   },
   {
-    inputs: [],
-    name: 'InvalidSubStatus',
-    type: 'error',
+    "inputs": [],
+    "name": "InvalidSubStatus",
+    "type": "error"
   },
   {
-    inputs: [
+    "inputs": [
       {
-        internalType: 'string',
-        name: 'message',
-        type: 'string',
-      },
+        "internalType": "string",
+        "name": "message",
+        "type": "string"
+      }
     ],
-    name: 'UnauthorizedApplication',
-    type: 'error',
+    "name": "UnauthorizedApplication",
+    "type": "error"
   },
   {
-    inputs: [
+    "inputs": [
       {
-        internalType: 'address',
-        name: 'caller',
-        type: 'address',
-      },
+        "internalType": "address",
+        "name": "caller",
+        "type": "address"
+      }
     ],
-    name: 'UnauthorizedMember',
-    type: 'error',
+    "name": "UnauthorizedMember",
+    "type": "error"
   },
   {
-    inputs: [
+    "inputs": [
       {
-        internalType: 'address',
-        name: 'caller',
-        type: 'address',
-      },
+        "internalType": "address",
+        "name": "caller",
+        "type": "address"
+      }
     ],
-    name: 'UnauthorizedNutritionist',
-    type: 'error',
+    "name": "UnauthorizedNutritionist",
+    "type": "error"
   },
   {
-    anonymous: false,
-    inputs: [
+    "anonymous": false,
+    "inputs": [
       {
-        indexed: false,
-        internalType: 'address',
-        name: 'applicant',
-        type: 'address',
-      },
+        "indexed": false,
+        "internalType": "address",
+        "name": "applicant",
+        "type": "address"
+      }
     ],
-    name: 'ApplicationApproved',
-    type: 'event',
+    "name": "ApplicationApproved",
+    "type": "event"
   },
   {
-    anonymous: false,
-    inputs: [
+    "anonymous": false,
+    "inputs": [
       {
-        indexed: false,
-        internalType: 'address',
-        name: 'member',
-        type: 'address',
+        "indexed": false,
+        "internalType": "address",
+        "name": "applicant",
+        "type": "address"
       },
       {
-        indexed: false,
-        internalType: 'uint256',
-        name: 'tokenId',
-        type: 'uint256',
-      },
+        "indexed": false,
+        "internalType": "string",
+        "name": "dataURI",
+        "type": "string"
+      }
     ],
-    name: 'BurnNutritionistNFT',
-    type: 'event',
+    "name": "NewApplication",
+    "type": "event"
   },
   {
-    anonymous: false,
-    inputs: [
+    "anonymous": false,
+    "inputs": [
       {
-        indexed: false,
-        internalType: 'address',
-        name: 'member',
-        type: 'address',
+        "indexed": false,
+        "internalType": "address",
+        "name": "user",
+        "type": "address"
       },
       {
-        indexed: false,
-        internalType: 'uint256',
-        name: 'tokenId',
-        type: 'uint256',
-      },
+        "indexed": false,
+        "internalType": "string",
+        "name": "dataURI",
+        "type": "string"
+      }
     ],
-    name: 'BurnUserNFT',
-    type: 'event',
+    "name": "NewSignUp",
+    "type": "event"
   },
   {
-    anonymous: false,
-    inputs: [
+    "anonymous": false,
+    "inputs": [
       {
-        indexed: false,
-        internalType: 'address',
-        name: 'nutritionist',
-        type: 'address',
+        "indexed": true,
+        "internalType": "address",
+        "name": "previousOwner",
+        "type": "address"
       },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "newOwner",
+        "type": "address"
+      }
     ],
-    name: 'MintNutritionistNFT',
-    type: 'event',
+    "name": "OwnershipTransferred",
+    "type": "event"
   },
   {
-    anonymous: false,
-    inputs: [
+    "inputs": [
       {
-        indexed: false,
-        internalType: 'address',
-        name: 'member',
-        type: 'address',
-      },
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
     ],
-    name: 'MintUserNFT',
-    type: 'event',
+    "name": "allArticles",
+    "outputs": [
+      {
+        "internalType": "string",
+        "name": "title",
+        "type": "string"
+      },
+      {
+        "internalType": "address",
+        "name": "author",
+        "type": "address"
+      },
+      {
+        "internalType": "string",
+        "name": "authorName",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "content",
+        "type": "string"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
   },
   {
-    anonymous: false,
-    inputs: [
+    "inputs": [
       {
-        indexed: false,
-        internalType: 'address',
-        name: 'applicant',
-        type: 'address',
-      },
-      {
-        indexed: false,
-        internalType: 'string',
-        name: 'dataURI',
-        type: 'string',
-      },
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
     ],
-    name: 'NewApplication',
-    type: 'event',
+    "name": "allCommunities",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "id",
+        "type": "uint256"
+      },
+      {
+        "internalType": "string",
+        "name": "name",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "communityDescription",
+        "type": "string"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
   },
   {
-    anonymous: false,
-    inputs: [
+    "inputs": [
       {
-        indexed: false,
-        internalType: 'address',
-        name: 'user',
-        type: 'address',
-      },
-      {
-        indexed: false,
-        internalType: 'string',
-        name: 'dataURI',
-        type: 'string',
-      },
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
     ],
-    name: 'NewSignUp',
-    type: 'event',
+    "name": "allFitnessPlans",
+    "outputs": [
+      {
+        "internalType": "string",
+        "name": "name",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "fitnessDescription",
+        "type": "string"
+      },
+      {
+        "internalType": "address",
+        "name": "creator",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
   },
   {
-    anonymous: false,
-    inputs: [
+    "inputs": [
       {
-        indexed: true,
-        internalType: 'address',
-        name: 'previousOwner',
-        type: 'address',
-      },
-      {
-        indexed: true,
-        internalType: 'address',
-        name: 'newOwner',
-        type: 'address',
-      },
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
     ],
-    name: 'OwnershipTransferred',
-    type: 'event',
+    "name": "allMealPlans",
+    "outputs": [
+      {
+        "internalType": "string",
+        "name": "mealName",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "mealDescription",
+        "type": "string"
+      },
+      {
+        "internalType": "address",
+        "name": "creator",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
   },
   {
-    inputs: [
+    "inputs": [
       {
-        internalType: 'uint256',
-        name: '',
-        type: 'uint256',
-      },
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
     ],
-    name: 'allArticles',
-    outputs: [
+    "name": "allNutritionists",
+    "outputs": [
       {
-        internalType: 'string',
-        name: 'title',
-        type: 'string',
+        "internalType": "string",
+        "name": "nutritionistPersonalData",
+        "type": "string"
       },
       {
-        internalType: 'address',
-        name: 'author',
-        type: 'address',
+        "internalType": "address",
+        "name": "nutritionistAddress",
+        "type": "address"
       },
       {
-        internalType: 'string',
-        name: 'authorName',
-        type: 'string',
-      },
-      {
-        internalType: 'string',
-        name: 'content',
-        type: 'string',
-      },
-    ],
-    stateMutability: 'view',
-    type: 'function',
-  },
-  {
-    inputs: [
-      {
-        internalType: 'uint256',
-        name: '',
-        type: 'uint256',
-      },
-    ],
-    name: 'allCommunities',
-    outputs: [
-      {
-        internalType: 'uint256',
-        name: 'id',
-        type: 'uint256',
-      },
-      {
-        internalType: 'string',
-        name: 'name',
-        type: 'string',
-      },
-      {
-        internalType: 'string',
-        name: 'communityDescription',
-        type: 'string',
-      },
-    ],
-    stateMutability: 'view',
-    type: 'function',
-  },
-  {
-    inputs: [
-      {
-        internalType: 'uint256',
-        name: '',
-        type: 'uint256',
-      },
-    ],
-    name: 'allFitnessPlans',
-    outputs: [
-      {
-        internalType: 'string',
-        name: 'name',
-        type: 'string',
-      },
-      {
-        internalType: 'string',
-        name: 'fitnessDescription',
-        type: 'string',
-      },
-      {
-        internalType: 'address',
-        name: 'creator',
-        type: 'address',
-      },
-    ],
-    stateMutability: 'view',
-    type: 'function',
-  },
-  {
-    inputs: [
-      {
-        internalType: 'uint256',
-        name: '',
-        type: 'uint256',
-      },
-    ],
-    name: 'allMealPlans',
-    outputs: [
-      {
-        internalType: 'string',
-        name: 'mealName',
-        type: 'string',
-      },
-      {
-        internalType: 'string',
-        name: 'mealDescription',
-        type: 'string',
-      },
-      {
-        internalType: 'address',
-        name: 'creator',
-        type: 'address',
-      },
-    ],
-    stateMutability: 'view',
-    type: 'function',
-  },
-  {
-    inputs: [
-      {
-        internalType: 'uint256',
-        name: '',
-        type: 'uint256',
-      },
-    ],
-    name: 'allNutritionists',
-    outputs: [
-      {
-        internalType: 'string',
-        name: 'nutritionistPersonalData',
-        type: 'string',
-      },
-      {
-        internalType: 'address',
-        name: 'nutritionistAddress',
-        type: 'address',
-      },
-      {
-        components: [
+        "components": [
           {
-            internalType: 'address',
-            name: 'consultant',
-            type: 'address',
+            "internalType": "address",
+            "name": "consultant",
+            "type": "address"
           },
           {
-            internalType: 'string',
-            name: 'consultationDescription',
-            type: 'string',
-          },
+            "internalType": "string",
+            "name": "consultationDescription",
+            "type": "string"
+          }
         ],
-        internalType: 'struct CommunityNetwork.ConsultationServices',
-        name: 'consultationServices',
-        type: 'tuple',
-      },
+        "internalType": "struct CommunityNetwork.ConsultationServices",
+        "name": "consultationServices",
+        "type": "tuple"
+      }
     ],
-    stateMutability: 'view',
-    type: 'function',
+    "stateMutability": "view",
+    "type": "function"
   },
   {
-    inputs: [
+    "inputs": [
       {
-        internalType: 'uint256',
-        name: '',
-        type: 'uint256',
-      },
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
     ],
-    name: 'allNutritionistsAddresses',
-    outputs: [
+    "name": "allNutritionistsAddresses",
+    "outputs": [
       {
-        internalType: 'address',
-        name: '',
-        type: 'address',
-      },
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
     ],
-    stateMutability: 'view',
-    type: 'function',
+    "stateMutability": "view",
+    "type": "function"
   },
   {
-    inputs: [
+    "inputs": [
       {
-        internalType: 'uint256',
-        name: '',
-        type: 'uint256',
-      },
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
     ],
-    name: 'allNutritionistsApplicants',
-    outputs: [
+    "name": "allNutritionistsApplicants",
+    "outputs": [
       {
-        internalType: 'address',
-        name: '',
-        type: 'address',
-      },
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
     ],
-    stateMutability: 'view',
-    type: 'function',
+    "stateMutability": "view",
+    "type": "function"
   },
   {
-    inputs: [
+    "inputs": [
       {
-        internalType: 'uint256',
-        name: '',
-        type: 'uint256',
-      },
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
     ],
-    name: 'allNutritionistsApplications',
-    outputs: [
+    "name": "allNutritionistsApplications",
+    "outputs": [
       {
-        internalType: 'string',
-        name: 'dataURI',
-        type: 'string',
+        "internalType": "string",
+        "name": "dataURI",
+        "type": "string"
       },
       {
-        internalType: 'address',
-        name: 'nutritionistAddress',
-        type: 'address',
+        "internalType": "address",
+        "name": "nutritionistAddress",
+        "type": "address"
       },
       {
-        internalType: 'enum CommunityNetwork.NutritionistApplicationStatus',
-        name: 'applicationStatus',
-        type: 'uint8',
-      },
+        "internalType": "enum CommunityNetwork.NutritionistApplicationStatus",
+        "name": "applicationStatus",
+        "type": "uint8"
+      }
     ],
-    stateMutability: 'view',
-    type: 'function',
+    "stateMutability": "view",
+    "type": "function"
   },
   {
-    inputs: [
+    "inputs": [
       {
-        internalType: 'uint256',
-        name: '',
-        type: 'uint256',
-      },
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
     ],
-    name: 'allUserAddresses',
-    outputs: [
+    "name": "allUserAddresses",
+    "outputs": [
       {
-        internalType: 'address',
-        name: '',
-        type: 'address',
-      },
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
     ],
-    stateMutability: 'view',
-    type: 'function',
+    "stateMutability": "view",
+    "type": "function"
   },
   {
-    inputs: [
+    "inputs": [
       {
-        internalType: 'uint256',
-        name: '',
-        type: 'uint256',
-      },
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
     ],
-    name: 'allUsers',
-    outputs: [
+    "name": "allUsers",
+    "outputs": [
       {
-        internalType: 'address',
-        name: 'userAddress',
-        type: 'address',
+        "internalType": "address",
+        "name": "userAddress",
+        "type": "address"
       },
       {
-        internalType: 'string',
-        name: 'userPersonalData',
-        type: 'string',
+        "internalType": "string",
+        "name": "userPersonalData",
+        "type": "string"
       },
       {
-        internalType: 'enum CommunityNetwork.UserSubscriptionStatus',
-        name: 'subStatus',
-        type: 'uint8',
+        "internalType": "enum CommunityNetwork.UserSubscriptionStatus",
+        "name": "subStatus",
+        "type": "uint8"
       },
       {
-        internalType: 'uint256',
-        name: 'subDeadline',
-        type: 'uint256',
-      },
+        "internalType": "uint256",
+        "name": "subDeadline",
+        "type": "uint256"
+      }
     ],
-    stateMutability: 'view',
-    type: 'function',
+    "stateMutability": "view",
+    "type": "function"
   },
   {
-    inputs: [
+    "inputs": [
       {
-        internalType: 'address',
-        name: '',
-        type: 'address',
-      },
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
     ],
-    name: 'applicantToIndex',
-    outputs: [
+    "name": "applicantToIndex",
+    "outputs": [
       {
-        internalType: 'uint256',
-        name: '',
-        type: 'uint256',
-      },
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
     ],
-    stateMutability: 'view',
-    type: 'function',
+    "stateMutability": "view",
+    "type": "function"
   },
   {
-    inputs: [
+    "inputs": [
       {
-        internalType: 'string',
-        name: 'dataURI',
-        type: 'string',
-      },
+        "internalType": "string",
+        "name": "dataURI",
+        "type": "string"
+      }
     ],
-    name: 'applyForNutritionistRole',
-    outputs: [],
-    stateMutability: 'payable',
-    type: 'function',
+    "name": "applyForNutritionistRole",
+    "outputs": [],
+    "stateMutability": "payable",
+    "type": "function"
   },
   {
-    inputs: [
+    "inputs": [
       {
-        internalType: 'address',
-        name: 'applicant',
-        type: 'address',
+        "internalType": "address",
+        "name": "applicant",
+        "type": "address"
       },
       {
-        internalType: 'string',
-        name: 'nutritionistNftUri',
-        type: 'string',
-      },
+        "internalType": "string",
+        "name": "nutritionistNftUri",
+        "type": "string"
+      }
     ],
-    name: 'approveNutritionistRole',
-    outputs: [],
-    stateMutability: 'nonpayable',
-    type: 'function',
+    "name": "approveNutritionistRole",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
   },
   {
-    inputs: [],
-    name: 'cancelNutritionistApplication',
-    outputs: [],
-    stateMutability: 'nonpayable',
-    type: 'function',
+    "inputs": [],
+    "name": "cancelNutritionistApplication",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
   },
   {
-    inputs: [
+    "inputs": [
       {
-        internalType: 'address',
-        name: 'account',
-        type: 'address',
-      },
+        "internalType": "address",
+        "name": "account",
+        "type": "address"
+      }
     ],
-    name: 'checkApplicationStatus',
-    outputs: [
+    "name": "checkIsApproved",
+    "outputs": [
       {
-        internalType: 'enum CommunityNetwork.NutritionistApplicationStatus',
-        name: '',
-        type: 'uint8',
-      },
+        "internalType": "enum CommunityNetwork.NutritionistApplicationStatus",
+        "name": "",
+        "type": "uint8"
+      }
     ],
-    stateMutability: 'view',
-    type: 'function',
+    "stateMutability": "view",
+    "type": "function"
   },
   {
-    inputs: [
+    "inputs": [
       {
-        internalType: 'address',
-        name: 'account',
-        type: 'address',
-      },
+        "internalType": "address",
+        "name": "_user",
+        "type": "address"
+      }
     ],
-    name: 'checkIsMember',
-    outputs: [
+    "name": "checkIsMember",
+    "outputs": [
       {
-        internalType: 'bool',
-        name: '',
-        type: 'bool',
-      },
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
     ],
-    stateMutability: 'view',
-    type: 'function',
+    "stateMutability": "view",
+    "type": "function"
   },
   {
-    inputs: [
+    "inputs": [
       {
-        internalType: 'address',
-        name: 'account',
-        type: 'address',
-      },
+        "internalType": "address",
+        "name": "_nutritionist",
+        "type": "address"
+      }
     ],
-    name: 'checkIsNutritionist',
-    outputs: [
+    "name": "checkIsNutritionist",
+    "outputs": [
       {
-        internalType: 'bool',
-        name: '',
-        type: 'bool',
-      },
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
     ],
-    stateMutability: 'view',
-    type: 'function',
+    "stateMutability": "view",
+    "type": "function"
   },
   {
-    inputs: [
+    "inputs": [
       {
-        internalType: 'bytes',
-        name: '',
-        type: 'bytes',
+        "internalType": "string",
+        "name": "name",
+        "type": "string"
       },
+      {
+        "internalType": "string",
+        "name": "communityDesc",
+        "type": "string"
+      },
+      {
+        "internalType": "address[]",
+        "name": "_members",
+        "type": "address[]"
+      }
     ],
-    name: 'checkUpkeep',
-    outputs: [
-      {
-        internalType: 'bool',
-        name: 'upkeepNeeded',
-        type: 'bool',
-      },
-      {
-        internalType: 'bytes',
-        name: 'performData',
-        type: 'bytes',
-      },
-    ],
-    stateMutability: 'view',
-    type: 'function',
+    "name": "createCommunity",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
   },
   {
-    inputs: [
+    "inputs": [
       {
-        internalType: 'string',
-        name: 'name',
-        type: 'string',
-      },
-      {
-        internalType: 'string',
-        name: 'communityDesc',
-        type: 'string',
-      },
-      {
-        internalType: 'address[]',
-        name: '_members',
-        type: 'address[]',
-      },
+        "internalType": "string",
+        "name": "_consultationDesc",
+        "type": "string"
+      }
     ],
-    name: 'createCommunity',
-    outputs: [],
-    stateMutability: 'nonpayable',
-    type: 'function',
+    "name": "createConsultation",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
   },
   {
-    inputs: [
+    "inputs": [
       {
-        internalType: 'string',
-        name: '_consultationDesc',
-        type: 'string',
+        "internalType": "string",
+        "name": "_fitnessName",
+        "type": "string"
       },
+      {
+        "internalType": "string",
+        "name": "fitnessDesc",
+        "type": "string"
+      }
     ],
-    name: 'createConsultation',
-    outputs: [],
-    stateMutability: 'nonpayable',
-    type: 'function',
+    "name": "createFitnessPlan",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
   },
   {
-    inputs: [
+    "inputs": [
       {
-        internalType: 'string',
-        name: '_fitnessName',
-        type: 'string',
+        "internalType": "string",
+        "name": "_mealName",
+        "type": "string"
       },
       {
-        internalType: 'string',
-        name: 'fitnessDesc',
-        type: 'string',
-      },
+        "internalType": "string",
+        "name": "mealPlanDesc",
+        "type": "string"
+      }
     ],
-    name: 'createFitnessPlan',
-    outputs: [],
-    stateMutability: 'nonpayable',
-    type: 'function',
+    "name": "createMealPlan",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
   },
   {
-    inputs: [
+    "inputs": [],
+    "name": "getAllArticles",
+    "outputs": [
       {
-        internalType: 'string',
-        name: '_mealName',
-        type: 'string',
-      },
-      {
-        internalType: 'string',
-        name: 'mealPlanDesc',
-        type: 'string',
-      },
-    ],
-    name: 'createMealPlan',
-    outputs: [],
-    stateMutability: 'nonpayable',
-    type: 'function',
-  },
-  {
-    inputs: [],
-    name: 'getAllArticles',
-    outputs: [
-      {
-        components: [
+        "components": [
           {
-            internalType: 'string',
-            name: 'title',
-            type: 'string',
+            "internalType": "string",
+            "name": "title",
+            "type": "string"
           },
           {
-            internalType: 'address',
-            name: 'author',
-            type: 'address',
+            "internalType": "address",
+            "name": "author",
+            "type": "address"
           },
           {
-            internalType: 'string',
-            name: 'authorName',
-            type: 'string',
+            "internalType": "string",
+            "name": "authorName",
+            "type": "string"
           },
           {
-            internalType: 'string',
-            name: 'content',
-            type: 'string',
-          },
+            "internalType": "string",
+            "name": "content",
+            "type": "string"
+          }
         ],
-        internalType: 'struct CommunityNetwork.Articles[]',
-        name: '',
-        type: 'tuple[]',
-      },
+        "internalType": "struct CommunityNetwork.Articles[]",
+        "name": "",
+        "type": "tuple[]"
+      }
     ],
-    stateMutability: 'view',
-    type: 'function',
+    "stateMutability": "view",
+    "type": "function"
   },
   {
-    inputs: [],
-    name: 'getAllCommunties',
-    outputs: [
+    "inputs": [],
+    "name": "getAllCommunties",
+    "outputs": [
       {
-        components: [
+        "components": [
           {
-            internalType: 'uint256',
-            name: 'id',
-            type: 'uint256',
+            "internalType": "uint256",
+            "name": "id",
+            "type": "uint256"
           },
           {
-            internalType: 'string',
-            name: 'name',
-            type: 'string',
+            "internalType": "string",
+            "name": "name",
+            "type": "string"
           },
           {
-            internalType: 'string',
-            name: 'communityDescription',
-            type: 'string',
+            "internalType": "string",
+            "name": "communityDescription",
+            "type": "string"
           },
           {
-            internalType: 'address[]',
-            name: 'members',
-            type: 'address[]',
-          },
+            "internalType": "address[]",
+            "name": "members",
+            "type": "address[]"
+          }
         ],
-        internalType: 'struct CommunityNetwork.Community[]',
-        name: '',
-        type: 'tuple[]',
-      },
+        "internalType": "struct CommunityNetwork.Community[]",
+        "name": "",
+        "type": "tuple[]"
+      }
     ],
-    stateMutability: 'view',
-    type: 'function',
+    "stateMutability": "view",
+    "type": "function"
   },
   {
-    inputs: [],
-    name: 'getAllFitnessPlans',
-    outputs: [
+    "inputs": [],
+    "name": "getAllFitnessPlans",
+    "outputs": [
       {
-        components: [
+        "components": [
           {
-            internalType: 'string',
-            name: 'name',
-            type: 'string',
+            "internalType": "string",
+            "name": "name",
+            "type": "string"
           },
           {
-            internalType: 'string',
-            name: 'fitnessDescription',
-            type: 'string',
+            "internalType": "string",
+            "name": "fitnessDescription",
+            "type": "string"
           },
           {
-            internalType: 'address',
-            name: 'creator',
-            type: 'address',
-          },
+            "internalType": "address",
+            "name": "creator",
+            "type": "address"
+          }
         ],
-        internalType: 'struct CommunityNetwork.FitnessPlans[]',
-        name: '',
-        type: 'tuple[]',
-      },
+        "internalType": "struct CommunityNetwork.FitnessPlans[]",
+        "name": "",
+        "type": "tuple[]"
+      }
     ],
-    stateMutability: 'view',
-    type: 'function',
+    "stateMutability": "view",
+    "type": "function"
   },
   {
-    inputs: [],
-    name: 'getAllMealPlans',
-    outputs: [
+    "inputs": [],
+    "name": "getAllMealPlans",
+    "outputs": [
       {
-        components: [
+        "components": [
           {
-            internalType: 'string',
-            name: 'mealName',
-            type: 'string',
+            "internalType": "string",
+            "name": "mealName",
+            "type": "string"
           },
           {
-            internalType: 'string',
-            name: 'mealDescription',
-            type: 'string',
+            "internalType": "string",
+            "name": "mealDescription",
+            "type": "string"
           },
           {
-            internalType: 'address',
-            name: 'creator',
-            type: 'address',
-          },
+            "internalType": "address",
+            "name": "creator",
+            "type": "address"
+          }
         ],
-        internalType: 'struct CommunityNetwork.MealPlans[]',
-        name: '',
-        type: 'tuple[]',
-      },
+        "internalType": "struct CommunityNetwork.MealPlans[]",
+        "name": "",
+        "type": "tuple[]"
+      }
     ],
-    stateMutability: 'view',
-    type: 'function',
+    "stateMutability": "view",
+    "type": "function"
   },
   {
-    inputs: [],
-    name: 'getAllMembers',
-    outputs: [
+    "inputs": [],
+    "name": "getAllMembers",
+    "outputs": [
       {
-        components: [
+        "components": [
           {
-            internalType: 'address',
-            name: 'userAddress',
-            type: 'address',
+            "internalType": "address",
+            "name": "userAddress",
+            "type": "address"
           },
           {
-            internalType: 'string',
-            name: 'userPersonalData',
-            type: 'string',
+            "internalType": "string",
+            "name": "userPersonalData",
+            "type": "string"
           },
           {
-            internalType: 'enum CommunityNetwork.UserSubscriptionStatus',
-            name: 'subStatus',
-            type: 'uint8',
+            "internalType": "enum CommunityNetwork.UserSubscriptionStatus",
+            "name": "subStatus",
+            "type": "uint8"
           },
           {
-            internalType: 'uint256',
-            name: 'subDeadline',
-            type: 'uint256',
-          },
+            "internalType": "uint256",
+            "name": "subDeadline",
+            "type": "uint256"
+          }
         ],
-        internalType: 'struct CommunityNetwork.User[]',
-        name: '_users',
-        type: 'tuple[]',
-      },
+        "internalType": "struct CommunityNetwork.User[]",
+        "name": "_users",
+        "type": "tuple[]"
+      }
     ],
-    stateMutability: 'view',
-    type: 'function',
+    "stateMutability": "view",
+    "type": "function"
   },
   {
-    inputs: [],
-    name: 'getAllNutritionists',
-    outputs: [
+    "inputs": [],
+    "name": "getAllNutritionists",
+    "outputs": [
       {
-        components: [
+        "components": [
           {
-            internalType: 'string',
-            name: 'nutritionistPersonalData',
-            type: 'string',
+            "internalType": "string",
+            "name": "nutritionistPersonalData",
+            "type": "string"
           },
           {
-            components: [
+            "components": [
               {
-                internalType: 'string',
-                name: 'mealName',
-                type: 'string',
+                "internalType": "string",
+                "name": "mealName",
+                "type": "string"
               },
               {
-                internalType: 'string',
-                name: 'mealDescription',
-                type: 'string',
+                "internalType": "string",
+                "name": "mealDescription",
+                "type": "string"
               },
               {
-                internalType: 'address',
-                name: 'creator',
-                type: 'address',
-              },
+                "internalType": "address",
+                "name": "creator",
+                "type": "address"
+              }
             ],
-            internalType: 'struct CommunityNetwork.MealPlans[]',
-            name: 'nutritionistMealplans',
-            type: 'tuple[]',
+            "internalType": "struct CommunityNetwork.MealPlans[]",
+            "name": "nutritionistMealplans",
+            "type": "tuple[]"
           },
           {
-            internalType: 'address',
-            name: 'nutritionistAddress',
-            type: 'address',
+            "internalType": "address",
+            "name": "nutritionistAddress",
+            "type": "address"
           },
           {
-            components: [
+            "components": [
               {
-                internalType: 'string',
-                name: 'name',
-                type: 'string',
+                "internalType": "string",
+                "name": "name",
+                "type": "string"
               },
               {
-                internalType: 'string',
-                name: 'fitnessDescription',
-                type: 'string',
+                "internalType": "string",
+                "name": "fitnessDescription",
+                "type": "string"
               },
               {
-                internalType: 'address',
-                name: 'creator',
-                type: 'address',
-              },
+                "internalType": "address",
+                "name": "creator",
+                "type": "address"
+              }
             ],
-            internalType: 'struct CommunityNetwork.FitnessPlans[]',
-            name: 'fitnessPlans',
-            type: 'tuple[]',
+            "internalType": "struct CommunityNetwork.FitnessPlans[]",
+            "name": "fitnessPlans",
+            "type": "tuple[]"
           },
           {
-            components: [
+            "components": [
               {
-                internalType: 'address',
-                name: 'consultant',
-                type: 'address',
+                "internalType": "address",
+                "name": "consultant",
+                "type": "address"
               },
               {
-                internalType: 'string',
-                name: 'consultationDescription',
-                type: 'string',
-              },
+                "internalType": "string",
+                "name": "consultationDescription",
+                "type": "string"
+              }
             ],
-            internalType: 'struct CommunityNetwork.ConsultationServices',
-            name: 'consultationServices',
-            type: 'tuple',
+            "internalType": "struct CommunityNetwork.ConsultationServices",
+            "name": "consultationServices",
+            "type": "tuple"
           },
           {
-            components: [
+            "components": [
               {
-                internalType: 'string',
-                name: 'title',
-                type: 'string',
+                "internalType": "string",
+                "name": "title",
+                "type": "string"
               },
               {
-                internalType: 'address',
-                name: 'author',
-                type: 'address',
+                "internalType": "address",
+                "name": "author",
+                "type": "address"
               },
               {
-                internalType: 'string',
-                name: 'authorName',
-                type: 'string',
+                "internalType": "string",
+                "name": "authorName",
+                "type": "string"
               },
               {
-                internalType: 'string',
-                name: 'content',
-                type: 'string',
-              },
+                "internalType": "string",
+                "name": "content",
+                "type": "string"
+              }
             ],
-            internalType: 'struct CommunityNetwork.Articles[]',
-            name: 'nutritionistArticles',
-            type: 'tuple[]',
-          },
+            "internalType": "struct CommunityNetwork.Articles[]",
+            "name": "nutritionistArticles",
+            "type": "tuple[]"
+          }
         ],
-        internalType: 'struct CommunityNetwork.Nutritionist[]',
-        name: '_nutritionists',
-        type: 'tuple[]',
-      },
+        "internalType": "struct CommunityNetwork.Nutritionist[]",
+        "name": "_nutritionists",
+        "type": "tuple[]"
+      }
     ],
-    stateMutability: 'view',
-    type: 'function',
+    "stateMutability": "view",
+    "type": "function"
   },
   {
-    inputs: [],
-    name: 'i_link',
-    outputs: [
+    "inputs": [
       {
-        internalType: 'contract LinkTokenInterface',
-        name: '',
-        type: 'address',
-      },
+        "internalType": "address",
+        "name": "_applicant",
+        "type": "address"
+      }
     ],
-    stateMutability: 'view',
-    type: 'function',
+    "name": "getNutritionistApplicantStatus",
+    "outputs": [
+      {
+        "internalType": "enum CommunityNetwork.NutritionistApplicationStatus",
+        "name": "",
+        "type": "uint8"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
   },
   {
-    inputs: [],
-    name: 'i_registry',
-    outputs: [
+    "inputs": [
       {
-        internalType: 'contract AutomationRegistryInterface',
-        name: '',
-        type: 'address',
-      },
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
     ],
-    stateMutability: 'view',
-    type: 'function',
+    "name": "idToCommunity",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "id",
+        "type": "uint256"
+      },
+      {
+        "internalType": "string",
+        "name": "name",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "communityDescription",
+        "type": "string"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
   },
   {
-    inputs: [
+    "inputs": [
       {
-        internalType: 'uint256',
-        name: '',
-        type: 'uint256',
-      },
+        "internalType": "uint256",
+        "name": "_communityId",
+        "type": "uint256"
+      }
     ],
-    name: 'idToCommunity',
-    outputs: [
-      {
-        internalType: 'uint256',
-        name: 'id',
-        type: 'uint256',
-      },
-      {
-        internalType: 'string',
-        name: 'name',
-        type: 'string',
-      },
-      {
-        internalType: 'string',
-        name: 'communityDescription',
-        type: 'string',
-      },
-    ],
-    stateMutability: 'view',
-    type: 'function',
+    "name": "joinCommunity",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
   },
   {
-    inputs: [
+    "inputs": [],
+    "name": "nutritionistApplicationFee",
+    "outputs": [
       {
-        internalType: 'uint256',
-        name: '_communityId',
-        type: 'uint256',
-      },
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
     ],
-    name: 'joinCommunity',
-    outputs: [],
-    stateMutability: 'nonpayable',
-    type: 'function',
+    "stateMutability": "view",
+    "type": "function"
   },
   {
-    inputs: [],
-    name: 'nutritionistApplicationFee',
-    outputs: [
+    "inputs": [
       {
-        internalType: 'uint256',
-        name: '',
-        type: 'uint256',
-      },
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
     ],
-    stateMutability: 'view',
-    type: 'function',
+    "name": "nutritionistApplicationStatus",
+    "outputs": [
+      {
+        "internalType": "enum CommunityNetwork.NutritionistApplicationStatus",
+        "name": "",
+        "type": "uint8"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
   },
   {
-    inputs: [
+    "inputs": [
       {
-        internalType: 'address',
-        name: '',
-        type: 'address',
-      },
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
     ],
-    name: 'nutritionistApplicationStatus',
-    outputs: [
+    "name": "nutritionistApplications",
+    "outputs": [
       {
-        internalType: 'enum CommunityNetwork.NutritionistApplicationStatus',
-        name: '',
-        type: 'uint8',
+        "internalType": "string",
+        "name": "dataURI",
+        "type": "string"
       },
+      {
+        "internalType": "address",
+        "name": "nutritionistAddress",
+        "type": "address"
+      },
+      {
+        "internalType": "enum CommunityNetwork.NutritionistApplicationStatus",
+        "name": "applicationStatus",
+        "type": "uint8"
+      }
     ],
-    stateMutability: 'view',
-    type: 'function',
+    "stateMutability": "view",
+    "type": "function"
   },
   {
-    inputs: [
+    "inputs": [],
+    "name": "nutritionistNFT",
+    "outputs": [
       {
-        internalType: 'address',
-        name: '',
-        type: 'address',
-      },
+        "internalType": "contract INutritionistNFT",
+        "name": "",
+        "type": "address"
+      }
     ],
-    name: 'nutritionistApplications',
-    outputs: [
-      {
-        internalType: 'string',
-        name: 'dataURI',
-        type: 'string',
-      },
-      {
-        internalType: 'address',
-        name: 'nutritionistAddress',
-        type: 'address',
-      },
-      {
-        internalType: 'enum CommunityNetwork.NutritionistApplicationStatus',
-        name: 'applicationStatus',
-        type: 'uint8',
-      },
-    ],
-    stateMutability: 'view',
-    type: 'function',
+    "stateMutability": "view",
+    "type": "function"
   },
   {
-    inputs: [],
-    name: 'nutritionistNFT',
-    outputs: [
+    "inputs": [
       {
-        internalType: 'contract INutritionistNFT',
-        name: '',
-        type: 'address',
-      },
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
     ],
-    stateMutability: 'view',
-    type: 'function',
-  },
-  {
-    inputs: [
+    "name": "nutritionists",
+    "outputs": [
       {
-        internalType: 'address',
-        name: '',
-        type: 'address',
-      },
-    ],
-    name: 'nutritionists',
-    outputs: [
-      {
-        internalType: 'string',
-        name: 'nutritionistPersonalData',
-        type: 'string',
+        "internalType": "string",
+        "name": "nutritionistPersonalData",
+        "type": "string"
       },
       {
-        internalType: 'address',
-        name: 'nutritionistAddress',
-        type: 'address',
+        "internalType": "address",
+        "name": "nutritionistAddress",
+        "type": "address"
       },
       {
-        components: [
+        "components": [
           {
-            internalType: 'address',
-            name: 'consultant',
-            type: 'address',
+            "internalType": "address",
+            "name": "consultant",
+            "type": "address"
           },
           {
-            internalType: 'string',
-            name: 'consultationDescription',
-            type: 'string',
-          },
+            "internalType": "string",
+            "name": "consultationDescription",
+            "type": "string"
+          }
         ],
-        internalType: 'struct CommunityNetwork.ConsultationServices',
-        name: 'consultationServices',
-        type: 'tuple',
-      },
+        "internalType": "struct CommunityNetwork.ConsultationServices",
+        "name": "consultationServices",
+        "type": "tuple"
+      }
     ],
-    stateMutability: 'view',
-    type: 'function',
+    "stateMutability": "view",
+    "type": "function"
   },
   {
-    inputs: [],
-    name: 'owner',
-    outputs: [
+    "inputs": [],
+    "name": "owner",
+    "outputs": [
       {
-        internalType: 'address',
-        name: '',
-        type: 'address',
-      },
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
     ],
-    stateMutability: 'view',
-    type: 'function',
+    "stateMutability": "view",
+    "type": "function"
   },
   {
-    inputs: [
+    "inputs": [
       {
-        internalType: 'bytes',
-        name: 'performData',
-        type: 'bytes',
+        "internalType": "string",
+        "name": "_title",
+        "type": "string"
       },
+      {
+        "internalType": "string",
+        "name": "_authorName",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_content",
+        "type": "string"
+      }
     ],
-    name: 'performUpkeep',
-    outputs: [],
-    stateMutability: 'nonpayable',
-    type: 'function',
+    "name": "publishArticle",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
   },
   {
-    inputs: [
+    "inputs": [
       {
-        internalType: 'string',
-        name: '_title',
-        type: 'string',
+        "internalType": "string",
+        "name": "_userData",
+        "type": "string"
       },
       {
-        internalType: 'string',
-        name: '_authorName',
-        type: 'string',
-      },
-      {
-        internalType: 'string',
-        name: '_content',
-        type: 'string',
-      },
+        "internalType": "string",
+        "name": "nftUri",
+        "type": "string"
+      }
     ],
-    name: 'publishArticle',
-    outputs: [],
-    stateMutability: 'nonpayable',
-    type: 'function',
+    "name": "registerUser",
+    "outputs": [],
+    "stateMutability": "payable",
+    "type": "function"
   },
   {
-    inputs: [
+    "inputs": [
       {
-        internalType: 'string',
-        name: 'name',
-        type: 'string',
-      },
-      {
-        internalType: 'bytes',
-        name: 'encryptedEmail',
-        type: 'bytes',
-      },
-      {
-        internalType: 'address',
-        name: 'upkeepContract',
-        type: 'address',
-      },
-      {
-        internalType: 'uint32',
-        name: 'gasLimit',
-        type: 'uint32',
-      },
-      {
-        internalType: 'address',
-        name: 'adminAddress',
-        type: 'address',
-      },
-      {
-        internalType: 'bytes',
-        name: 'checkData',
-        type: 'bytes',
-      },
-      {
-        internalType: 'uint96',
-        name: 'amount',
-        type: 'uint96',
-      },
-      {
-        internalType: 'uint8',
-        name: 'source',
-        type: 'uint8',
-      },
+        "internalType": "address",
+        "name": "applicant",
+        "type": "address"
+      }
     ],
-    name: 'registerAndPredictID',
-    outputs: [],
-    stateMutability: 'nonpayable',
-    type: 'function',
+    "name": "rejectNutritionistRole",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
   },
   {
-    inputs: [
+    "inputs": [
       {
-        internalType: 'string',
-        name: '_userData',
-        type: 'string',
-      },
-      {
-        internalType: 'string',
-        name: 'nftUri',
-        type: 'string',
-      },
+        "internalType": "string",
+        "name": "nftUri",
+        "type": "string"
+      }
     ],
-    name: 'registerUser',
-    outputs: [],
-    stateMutability: 'payable',
-    type: 'function',
+    "name": "renewSubscription",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
   },
   {
-    inputs: [],
-    name: 'registrar',
-    outputs: [
-      {
-        internalType: 'address',
-        name: '',
-        type: 'address',
-      },
-    ],
-    stateMutability: 'view',
-    type: 'function',
+    "inputs": [],
+    "name": "renounceOwnership",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
   },
   {
-    inputs: [
+    "inputs": [
       {
-        internalType: 'address',
-        name: 'applicant',
-        type: 'address',
-      },
+        "internalType": "address",
+        "name": "_member",
+        "type": "address"
+      }
     ],
-    name: 'rejectNutritionistRole',
-    outputs: [],
-    stateMutability: 'nonpayable',
-    type: 'function',
+    "name": "revokeUser",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
   },
   {
-    inputs: [
+    "inputs": [
       {
-        internalType: 'string',
-        name: 'nftUri',
-        type: 'string',
+        "internalType": "address",
+        "name": "_userNFT",
+        "type": "address"
       },
+      {
+        "internalType": "address",
+        "name": "_nutritionistNFT",
+        "type": "address"
+      }
     ],
-    name: 'renewSubscription',
-    outputs: [],
-    stateMutability: 'nonpayable',
-    type: 'function',
+    "name": "setNFTs",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
   },
   {
-    inputs: [],
-    name: 'renounceOwnership',
-    outputs: [],
-    stateMutability: 'nonpayable',
-    type: 'function',
+    "inputs": [],
+    "name": "subscriptionDuration",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
   },
   {
-    inputs: [
+    "inputs": [
       {
-        internalType: 'address',
-        name: '_member',
-        type: 'address',
-      },
+        "internalType": "address",
+        "name": "newOwner",
+        "type": "address"
+      }
     ],
-    name: 'revokeUser',
-    outputs: [],
-    stateMutability: 'nonpayable',
-    type: 'function',
+    "name": "transferOwnership",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
   },
   {
-    inputs: [
+    "inputs": [],
+    "name": "treasury",
+    "outputs": [
       {
-        internalType: 'address',
-        name: '_userNFT',
-        type: 'address',
-      },
-      {
-        internalType: 'address',
-        name: '_nutritionistNFT',
-        type: 'address',
-      },
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
     ],
-    name: 'setNFTs',
-    outputs: [],
-    stateMutability: 'nonpayable',
-    type: 'function',
+    "stateMutability": "view",
+    "type": "function"
   },
   {
-    inputs: [],
-    name: 'subscriptionDuration',
-    outputs: [
+    "inputs": [],
+    "name": "userApplicationFee",
+    "outputs": [
       {
-        internalType: 'uint256',
-        name: '',
-        type: 'uint256',
-      },
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
     ],
-    stateMutability: 'view',
-    type: 'function',
+    "stateMutability": "view",
+    "type": "function"
   },
   {
-    inputs: [
+    "inputs": [],
+    "name": "userNFT",
+    "outputs": [
       {
-        internalType: 'address',
-        name: 'newOwner',
-        type: 'address',
-      },
+        "internalType": "contract IUserNFT",
+        "name": "",
+        "type": "address"
+      }
     ],
-    name: 'transferOwnership',
-    outputs: [],
-    stateMutability: 'nonpayable',
-    type: 'function',
+    "stateMutability": "view",
+    "type": "function"
   },
   {
-    inputs: [],
-    name: 'treasury',
-    outputs: [
+    "inputs": [
       {
-        internalType: 'address',
-        name: '',
-        type: 'address',
-      },
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
     ],
-    stateMutability: 'view',
-    type: 'function',
+    "name": "userToCommunity",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "id",
+        "type": "uint256"
+      },
+      {
+        "internalType": "string",
+        "name": "name",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "communityDescription",
+        "type": "string"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
   },
   {
-    inputs: [],
-    name: 'userApplicationFee',
-    outputs: [
+    "inputs": [
       {
-        internalType: 'uint256',
-        name: '',
-        type: 'uint256',
-      },
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
     ],
-    stateMutability: 'view',
-    type: 'function',
-  },
-  {
-    inputs: [],
-    name: 'userNFT',
-    outputs: [
+    "name": "userToIndex",
+    "outputs": [
       {
-        internalType: 'contract IUserNFT',
-        name: '',
-        type: 'address',
-      },
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
     ],
-    stateMutability: 'view',
-    type: 'function',
-  },
-  {
-    inputs: [
-      {
-        internalType: 'address',
-        name: '',
-        type: 'address',
-      },
-    ],
-    name: 'userToCommunity',
-    outputs: [
-      {
-        internalType: 'uint256',
-        name: 'id',
-        type: 'uint256',
-      },
-      {
-        internalType: 'string',
-        name: 'name',
-        type: 'string',
-      },
-      {
-        internalType: 'string',
-        name: 'communityDescription',
-        type: 'string',
-      },
-    ],
-    stateMutability: 'view',
-    type: 'function',
-  },
-  {
-    inputs: [
-      {
-        internalType: 'address',
-        name: '',
-        type: 'address',
-      },
-    ],
-    name: 'userToIndex',
-    outputs: [
-      {
-        internalType: 'uint256',
-        name: '',
-        type: 'uint256',
-      },
-    ],
-    stateMutability: 'view',
-    type: 'function',
-  },
-];
+    "stateMutability": "view",
+    "type": "function"
+  }
+]
