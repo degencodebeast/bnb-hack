@@ -55,7 +55,6 @@ import {
   getNetwork,
   readContract,
   watchNetwork,
-  getChainId,
   writeContract,
 } from '@wagmi/core';
 
@@ -78,7 +77,7 @@ const RegisterForm = ({
     // status: 'success',
     // title: 'Sign up was successful',
   });
-  const c = getChainId(useConfig());
+  //const c = getChainId(useConfig());
   const [isSubmitting, setIsSubmitting] = useState(false);
   const router = useRouter();
   const swiperRef = useRef<SwiperRef>();
