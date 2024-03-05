@@ -25,7 +25,7 @@ export const articles = mysqlTable(
       'draft'
     ),
     views: int('views').default(0),
-    authorAddress: varchar('author_address_idx', { length: 50 }).notNull(),
+    authorAddress: varchar('author_address', { length: 100 }).notNull(),
     createdAt: timestamp('created_at').defaultNow(),
     updatedAt: timestamp('updated_at').onUpdateNow(),
   },
@@ -93,7 +93,8 @@ export const users = mysqlTable(
     username: varchar('username', { length: 50 }).unique().notNull(),
     password: varchar('password', { length: 255 }),
     email: varchar('email', { length: 255 }).unique(),
-    address: varchar('address', { length: 100 }).notNull().unique(),
+    address: varchar('address', { length: 100 }).notNull(),
+    chainId: int('chainId'),
     avatar: varchar('avatar', { length: 255 }),
     userType: mysqlEnum('user_type', ['member', 'nutritionist'])
       .default('member')
@@ -105,6 +106,7 @@ export const users = mysqlTable(
   (t) => ({
     emailIdx: index('email_idx').on(t.email),
     userTypeIdx: index('user_type_idx').on(t.userType),
+
     addressIdx: uniqueIndex('address_idx').on(t.address),
     usernameIdx: uniqueIndex('username_idx').on(t.username),
   })

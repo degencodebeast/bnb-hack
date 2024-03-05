@@ -23,6 +23,14 @@ export const RejuvenateApi = createApi({
   tagTypes: ['Articles', 'MealPlans', 'FitnessPlans', 'Users'],
 
   endpoints: (builder) => ({
+    sendUserInfoToAI: builder.mutation<APIResponse<any>, any>({
+      query: (data) => ({
+        url: `ai/`,
+        method: 'POST',
+        body: data,
+      }),
+      invalidatesTags: [{ type: 'Articles' as const, id: 'LIST' }],
+    }),
     getArticles: builder.query<
       Partial<APIResponse<Article[]>>,
       { s?: 'all' | 'published' | 'draft'; ad?: string }
@@ -118,7 +126,7 @@ export const RejuvenateApi = createApi({
       Partial<APIResponse<Article>>,
       { usernameOrAddress: string }
     >({
-      query: ({ usernameOrAddress }) => `articles/${usernameOrAddress}`,
+      query: ({ usernameOrAddress }) => `users/${usernameOrAddress}`,
       providesTags: (result, error, { usernameOrAddress }) => {
         return [{ type: 'Users' as const, id: usernameOrAddress }];
       },
@@ -251,4 +259,5 @@ export const {
   useAddUserMutation,
   useGetUsersQuery,
   useGetUserQuery,
+  useSendUserInfoToAIMutation,
 } = RejuvenateApi;

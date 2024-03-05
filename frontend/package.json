@@ -60,6 +60,7 @@
     "mysql2": "^3.9.1",
     "nanoid": "^5.0.5",
     "next": "13.4.19",
+    "openai": "^4.28.4",
     "pino-pretty": "^10.2.3",
     "postcss": "8.4.29",
     "random-words": "^2.0.1",

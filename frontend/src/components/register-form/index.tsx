@@ -11,7 +11,9 @@ import {
   usePrepareContractWrite,
   useWaitForTransaction,
   useAccount,
+  useConfig,
 } from 'wagmi';
+
 import { ethers } from 'ethers';
 import {
   Stack,
@@ -42,7 +44,10 @@ import { useDebounce } from '@/hooks/useDebounce';
 import { communityAbi } from '../../../abis';
 import { communityAddr } from '@/utils/constants';
 import { useStorageUpload } from '@thirdweb-dev/react';
-import { useAddUserMutation } from '@/state/services';
+import {
+  useAddUserMutation,
+  useSendUserInfoToAIMutation,
+} from '@/state/services';
 import { generateUsername } from '@/utils';
 
 import { parseEther, parseGwei } from 'viem';
@@ -50,6 +55,7 @@ import {
   getNetwork,
   readContract,
   watchNetwork,
+  getChainId,
   writeContract,
 } from '@wagmi/core';
 
@@ -65,13 +71,14 @@ const RegisterForm = ({
     { data: createdUser, isLoading: isCreatingUser, isSuccess },
   ] = useAddUserMutation();
   const { address } = useAccount();
-
+  const [sendUserToAI] = useSendUserInfoToAIMutation();
   const toast = useToast({
     // duration: 3000,
     // position: 'top',
     // status: 'success',
     // title: 'Sign up was successful',
   });
+  const c = getChainId(useConfig());
   const [isSubmitting, setIsSubmitting] = useState(false);
   const router = useRouter();
   const swiperRef = useRef<SwiperRef>();
@@ -167,7 +174,7 @@ const RegisterForm = ({
 
   const onValidSubmit = async (data: any) => {
     //data.preventDefault();
-   
+
     try {
       if (isSubmitSuccessful) {
         // setIsLoading(true);
@@ -198,8 +205,8 @@ const RegisterForm = ({
 
         const dataToUpload = [formDataObject];
         const cid = await upload({ data: dataToUpload });
-        console.log("The index of 0 in the cid array: ", cid[0])
-        
+        console.log('The index of 0 in the cid array: ', cid[0]);
+
         setCid(cid[0]);
         setUser({
           ...user,
@@ -208,12 +215,13 @@ const RegisterForm = ({
           name: data.fullName,
         });
 
-        // await createUser({
-        //   username: generateUsername(),
-        //   fullName: data?.fullName,
-        //   address: address as `0x${string}`,
-        //   userType: SelectedUserType,
-        // }).unwrap();
+        await createUser({
+          username: generateUsername(),
+          fullName: data?.fullName,
+          address: address as `0x${string}`,
+          userType: SelectedUserType,
+          chainId: 0,
+        }).unwrap();
 
         await registerUserTx();
         await new Promise((resolve) => setTimeout(resolve, 10000));

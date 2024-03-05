@@ -61,10 +61,12 @@ export interface IUser {
   role?: USER_ROLE;
   createdAt: string | Date;
   updatedAt?: string | Date;
+  chainId?: number;
 }
 export type NewUser = Pick<
   IUser,
   | 'address'
+  | 'chainId'
   | 'fullName'
   | 'role'
   | 'userType'
