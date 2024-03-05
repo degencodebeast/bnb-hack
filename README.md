@@ -1,11 +1,12 @@
-# RevitalizeAI x Hack-Vitalia hack
+# RevitalizeAI x Bnb Hack
 
-Live Demo - [Youtube video](https://youtu.be/u9oClURPhUY) <br />
-Live Link - [RevitalizeAI dapp](https://desoc-hack.vercel.app/) <br />
+Live Demo - [Youtube video]() <br />
+Live Link - [RevitalizeAI dapp](https://revitalizeai.vercel.app/) <br />
+Pitch Deck - [Google slides](https://docs.google.com/presentation/d/17ugyPuitUSNnS0WOj0iDY__dNDwvGXNM3Gl82835Rcg/edit?usp=sharing) <br/>
 
 ## ✨ Description
 
-[RevitalizeAI](https://desoc-hack.vercel.app/) is the first community blockchain based project powered by community built for community to promote healthy living and achieve healthy locations where people live up to a 100 years all around the world. We are trying to make sure people live healthy by incorporating healthy habits into their lifestyle and trying to make sure they get the most out of the human experience by discovering their purpose if they haven't already and enjoying this life, all while doing it together as a community being accountable to each other.
+[RevitalizeAI](https://revitalizeai.vercel.app/) is the first community blockchain based project powered by community built for community to promote healthy living and achieve healthy locations where people live up to a 100 years all around the world. We are trying to make sure people live healthy by incorporating healthy habits into their lifestyle and trying to make sure they get the most out of the human experience by discovering their purpose if they haven't already and enjoying this life, all while doing it together as a community being accountable to each other.
 
 ## Inspiration
 
@@ -43,10 +44,10 @@ We created and deployed our smart contracts on the Avalanche fuji testnet chain.
 
 ### Avalanche Testnet
 
-1. CommunityNetwork contract 0x48DF3348bb3810c4eec755152fA3a9c68897f0F2 - [View source code](https://github.com/degencodebeast/RevitalizeAI-Avalanche/blob/main/smart-contracts/contracts/CommunityNetwork.sol) | [View on Avalanche](https://testnet.snowtrace.io/address/0x48DF3348bb3810c4eec755152fA3a9c68897f0F2)
+1. CommunityNetwork contract 0x763055Ca49aDB6b41Da2522Ab7E2C714601FaD88 - [View source code](https://github.com/degencodebeast/bnb-hack/blob/main/smart-contracts/contracts/CommunityNetwork.sol) | [View on Bnb Chain](https://testnet.bscscan.com/address/0x763055Ca49aDB6b41Da2522Ab7E2C714601FaD88)
 
-2. Treasury contract 0x3168Be8281fa2D097d3DB9119143b0937e529a87 - [View source code](https://github.com/degencodebeast/RevitalizeAI-Avalanche/blob/main/smart-contracts/contracts/Treasury.sol) | [View on Avalanche](https://testnet.snowtrace.io/address/0x3168Be8281fa2D097d3DB9119143b0937e529a87)
+2. Treasury contract 0xA1BEc8CfFe3bED25124384867C9369836190593e - [View source code](https://github.com/degencodebeast/bnb-hack/blob/main/smart-contracts/contracts/Treasury.sol) | [View on Bnb Chain](https://testnet.bscscan.com/address/0xA1BEc8CfFe3bED25124384867C9369836190593e)
 
-3. User NFT contract 0xC862942EF3bb3D185F8154487A6af9ca9F5FB775 - [View source code](https://github.com/degencodebeast/RevitalizeAI-Avalanche/blob/main/smart-contracts/contracts/UserNFT.sol) | [View on Avalanche](https://testnet.snowtrace.io/address/0xC862942EF3bb3D185F8154487A6af9ca9F5FB775)
+3. User NFT contract 0xCCcE35FF7d1F1501Dc086ef232bC5d46cE5953C6 - [View source code](https://github.com/degencodebeast/bnb-hack/blob/main/smart-contracts/contracts/UserNFT.sol) | [View on Bnb Chain](https://testnet.bscscan.com/address/0xCCcE35FF7d1F1501Dc086ef232bC5d46cE5953C6)
 
-4. Nutritionist NFT contract 0x0Ac68437476A0aB3aC8e3fB03b01B030B4Ec5413 - [View source code](https://github.com/degencodebeast/RevitalizeAI-Avalanche/blob/main/smart-contracts/contracts/NutritionistNFT.sol) | [View on Avalanche](https://testnet.snowtrace.io/address/0x0Ac68437476A0aB3aC8e3fB03b01B030B4Ec5413)
+4. Nutritionist NFT contract 0x1aC0a3a87A83a7605606A5f629717Ded061B1DDA - [View source code](https://github.com/degencodebeast/bnb-hack/blob/main/smart-contracts/contracts/NutritionistNFT.sol) | [View on Bnb Chain](https://testnet.bscscan.com/address/0x1aC0a3a87A83a7605606A5f629717Ded061B1DDA)

@@ -5,14 +5,11 @@ import Providers from './providers';
 import Head from 'next/head';
 import { Poppins } from 'next/font/google';
 import { WagmiConfig, createConfig, configureChains } from 'wagmi';
-
 import { getDefaultWallets, RainbowKitProvider } from '@rainbow-me/rainbowkit';
 import '@rainbow-me/rainbowkit/styles.css';
-import { arbitrumGoerli, avalancheFuji } from 'wagmi/chains';
+import { arbitrumGoerli, avalancheFuji, bscTestnet} from 'wagmi/chains';
 import { publicProvider } from 'wagmi/providers/public';
 import { useEffect, useState } from 'react';
-import { jsonRpcProvider } from 'wagmi/providers/jsonRpc';
-import { shido } from '@/utils/constants';
 import { HuddleClient, HuddleProvider } from '@huddle01/react';
 
 const huddleClient = new HuddleClient({
@@ -25,14 +22,9 @@ const huddleClient = new HuddleClient({
 });
 
 const { chains, publicClient, webSocketPublicClient } = configureChains(
-  [shido],
+  [bscTestnet],
   [
-    jsonRpcProvider({
-      rpc: (chain) => ({
-        http: `https://rpc-testnet-nodes.shidoscan.com`,
-      }),
-    }),
-    //publicProvider()
+    publicProvider()
   ]
 );
 

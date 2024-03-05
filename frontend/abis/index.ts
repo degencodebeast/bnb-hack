@@ -5,6 +5,21 @@ export const communityAbi = [
         "internalType": "address",
         "name": "_treasury",
         "type": "address"
+      },
+      {
+        "internalType": "contract LinkTokenInterface",
+        "name": "_link",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "_registrar",
+        "type": "address"
+      },
+      {
+        "internalType": "contract AutomationRegistryInterface",
+        "name": "_registry",
+        "type": "address"
       }
     ],
     "stateMutability": "nonpayable",
@@ -84,6 +99,70 @@ export const communityAbi = [
       }
     ],
     "name": "ApplicationApproved",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "member",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "tokenId",
+        "type": "uint256"
+      }
+    ],
+    "name": "BurnNutritionistNFT",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "member",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "tokenId",
+        "type": "uint256"
+      }
+    ],
+    "name": "BurnUserNFT",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "nutritionist",
+        "type": "address"
+      }
+    ],
+    "name": "MintNutritionistNFT",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "member",
+        "type": "address"
+      }
+    ],
+    "name": "MintUserNFT",
     "type": "event"
   },
   {
@@ -490,7 +569,7 @@ export const communityAbi = [
         "type": "address"
       }
     ],
-    "name": "checkIsApproved",
+    "name": "checkApplicationStatus",
     "outputs": [
       {
         "internalType": "enum CommunityNetwork.NutritionistApplicationStatus",
@@ -505,7 +584,7 @@ export const communityAbi = [
     "inputs": [
       {
         "internalType": "address",
-        "name": "_user",
+        "name": "account",
         "type": "address"
       }
     ],
@@ -524,7 +603,7 @@ export const communityAbi = [
     "inputs": [
       {
         "internalType": "address",
-        "name": "_nutritionist",
+        "name": "account",
         "type": "address"
       }
     ],
@@ -534,6 +613,30 @@ export const communityAbi = [
         "internalType": "bool",
         "name": "",
         "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes",
+        "name": "",
+        "type": "bytes"
+      }
+    ],
+    "name": "checkUpkeep",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "upkeepNeeded",
+        "type": "bool"
+      },
+      {
+        "internalType": "bytes",
+        "name": "performData",
+        "type": "bytes"
       }
     ],
     "stateMutability": "view",
@@ -890,19 +993,26 @@ export const communityAbi = [
     "type": "function"
   },
   {
-    "inputs": [
+    "inputs": [],
+    "name": "i_link",
+    "outputs": [
       {
-        "internalType": "address",
-        "name": "_applicant",
+        "internalType": "contract LinkTokenInterface",
+        "name": "",
         "type": "address"
       }
     ],
-    "name": "getNutritionistApplicantStatus",
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "i_registry",
     "outputs": [
       {
-        "internalType": "enum CommunityNetwork.NutritionistApplicationStatus",
+        "internalType": "contract AutomationRegistryInterface",
         "name": "",
-        "type": "uint8"
+        "type": "address"
       }
     ],
     "stateMutability": "view",
@@ -1081,6 +1191,19 @@ export const communityAbi = [
   {
     "inputs": [
       {
+        "internalType": "bytes",
+        "name": "performData",
+        "type": "bytes"
+      }
+    ],
+    "name": "performUpkeep",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
         "internalType": "string",
         "name": "_title",
         "type": "string"
@@ -1105,6 +1228,54 @@ export const communityAbi = [
     "inputs": [
       {
         "internalType": "string",
+        "name": "name",
+        "type": "string"
+      },
+      {
+        "internalType": "bytes",
+        "name": "encryptedEmail",
+        "type": "bytes"
+      },
+      {
+        "internalType": "address",
+        "name": "upkeepContract",
+        "type": "address"
+      },
+      {
+        "internalType": "uint32",
+        "name": "gasLimit",
+        "type": "uint32"
+      },
+      {
+        "internalType": "address",
+        "name": "adminAddress",
+        "type": "address"
+      },
+      {
+        "internalType": "bytes",
+        "name": "checkData",
+        "type": "bytes"
+      },
+      {
+        "internalType": "uint96",
+        "name": "amount",
+        "type": "uint96"
+      },
+      {
+        "internalType": "uint8",
+        "name": "source",
+        "type": "uint8"
+      }
+    ],
+    "name": "registerAndPredictID",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "string",
         "name": "_userData",
         "type": "string"
       },
@@ -1117,6 +1288,19 @@ export const communityAbi = [
     "name": "registerUser",
     "outputs": [],
     "stateMutability": "payable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "registrar",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
     "type": "function"
   },
   {
