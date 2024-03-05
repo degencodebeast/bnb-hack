@@ -214,13 +214,13 @@ const RegisterForm = ({
           name: data.fullName,
         });
 
-        await createUser({
-          username: generateUsername(),
-          fullName: data?.fullName,
-          address: address as `0x${string}`,
-          userType: SelectedUserType,
-          chainId: 0,
-        }).unwrap();
+        // await createUser({
+        //   username: generateUsername(),
+        //   fullName: data?.fullName,
+        //   address: address as `0x${string}`,
+        //   userType: SelectedUserType,
+        //   chainId: 0,
+        // }).unwrap();
 
         await registerUserTx();
         await new Promise((resolve) => setTimeout(resolve, 10000));
@@ -236,7 +236,7 @@ const RegisterForm = ({
       toast({
         status: 'error',
         title: 'An error occured, please try again...',
-        description: 'Make sure you have gas fee',
+        description: 'An error occured',
       });
     }
   };

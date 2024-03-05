@@ -1,6 +1,6 @@
 # RevitalizeAI x Bnb Hack
 
-Live Demo - [Youtube video]() <br />
+Live Demo - [Demo video](https://www.loom.com/share/f46d0848b90d4aac89d11e014c7d0f27) <br />
 Live Link - [RevitalizeAI dapp](https://revitalizeai.vercel.app/) <br />
 Pitch Deck - [Google slides](https://docs.google.com/presentation/d/17ugyPuitUSNnS0WOj0iDY__dNDwvGXNM3Gl82835Rcg/edit?usp=sharing) <br/>
 
