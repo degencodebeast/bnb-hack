@@ -131,7 +131,7 @@ const RegisterForm = ({
         duration: 3000,
         position: 'top',
         status: 'error',
-        title: 'You have signed up before',
+        title: 'error encountered',
       });
       console.log(error);
     }
@@ -208,12 +208,12 @@ const RegisterForm = ({
           name: data.fullName,
         });
 
-        await createUser({
-          username: generateUsername(),
-          fullName: data?.fullName,
-          address: address as `0x${string}`,
-          userType: SelectedUserType,
-        }).unwrap();
+        // await createUser({
+        //   username: generateUsername(),
+        //   fullName: data?.fullName,
+        //   address: address as `0x${string}`,
+        //   userType: SelectedUserType,
+        // }).unwrap();
 
         await registerUserTx();
         await new Promise((resolve) => setTimeout(resolve, 10000));
