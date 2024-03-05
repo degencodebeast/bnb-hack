@@ -18,8 +18,8 @@ export const shido = {
       default: { http: ["https://rpc-testnet-nodes.shidoscan.com"] },
     },
     blockExplorers: {
-      etherscan: { name: "explorer", url: "https://shidoscan.com" },
-      default: { name: "explorer", url: "https://shidoscan.com" },
+      etherscan: { name: "expolorer", url: "https://shidoscan.com" },
+      default: { name: "expolorer", url: "https://shidoscan.com" },
     },
 
   } as const satisfies Chain;

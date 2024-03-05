@@ -41,7 +41,7 @@ import { countries } from '@/utils/countries';
 import { useDebounce } from '@/hooks/useDebounce';
 import { communityAbi } from '../../../abis';
 import { communityAddr } from '@/utils/constants';
-import { uploadToThirdWeb } from '@/helpers';
+import { useStorageUpload } from '@thirdweb-dev/react';
 import { useAddUserMutation } from '@/state/services';
 import { generateUsername } from '@/utils';
 
@@ -107,8 +107,9 @@ const RegisterForm = ({
 
   // get functions to build form with useForm() hook
   const { errors, isValid, isSubmitSuccessful } = formState;
-  const [cid, setCid] = useState<string>('');
+  const [cid, setCid] = useState<any>('');
   //const [isLoading, setIsLoading] = useState(false);
+  const { mutateAsync: upload } = useStorageUpload();
 
   const registerUserTx = async () => {
     try {
@@ -130,7 +131,7 @@ const RegisterForm = ({
         duration: 3000,
         position: 'top',
         status: 'error',
-        title: 'You have signed up before',
+        title: 'error encountered',
       });
       console.log(error);
     }
@@ -166,6 +167,7 @@ const RegisterForm = ({
 
   const onValidSubmit = async (data: any) => {
     //data.preventDefault();
+   
     try {
       if (isSubmitSuccessful) {
         // setIsLoading(true);
@@ -194,22 +196,24 @@ const RegisterForm = ({
           smokingLength: data.smokingLength,
         };
 
-        const cid = await uploadToThirdWeb(formDataObject);
-
-        setCid(cid);
+        const dataToUpload = [formDataObject];
+        const cid = await upload({ data: dataToUpload });
+        console.log("The index of 0 in the cid array: ", cid[0])
+        
+        setCid(cid[0]);
         setUser({
           ...user,
           userAddress: address,
-          userCidData: cid,
+          userCidData: cid[0],
           name: data.fullName,
         });
 
-        await createUser({
-          username: generateUsername(),
-          fullName: data?.fullName,
-          address: address as `0x${string}`,
-          userType: SelectedUserType,
-        }).unwrap();
+        // await createUser({
+        //   username: generateUsername(),
+        //   fullName: data?.fullName,
+        //   address: address as `0x${string}`,
+        //   userType: SelectedUserType,
+        // }).unwrap();
 
         await registerUserTx();
         await new Promise((resolve) => setTimeout(resolve, 10000));
@@ -220,11 +224,12 @@ const RegisterForm = ({
         setIsSubmitting(false);
       }
     } catch (error) {
+      console.log('error:', error);
       setIsSubmitting(false);
       toast({
         status: 'error',
         title: 'An error occured, please try again...',
-        description: 'Make sure you have a gas fee',
+        description: 'Make sure you have gas fee',
       });
     }
   };
