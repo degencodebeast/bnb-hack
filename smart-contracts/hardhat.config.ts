@@ -93,12 +93,17 @@ const config: HardhatUserConfig = {
     },
     arbitrumGoerli: {
       url: "https://goerli-rollup.arbitrum.io/rpc",
-      chainId:421613,
+      chainId: 421613,
       accounts: [`${process.env.PRIVATE_KEY}`],
     },
     aurora: {
       url: "https://testnet.aurora.dev",
       chainId: 1313161555,
+      accounts: [`${process.env.PRIVATE_KEY}`],
+    },
+    bscTestnet: {
+      url: "https://97.rpc.thirdweb.com",
+      chainId: 97,
       accounts: [`${process.env.PRIVATE_KEY}`],
     },
     toronet: {
@@ -122,7 +127,8 @@ const config: HardhatUserConfig = {
       goerli: "1T7UC6DGWNA36AVHC4IGIRRE1MTGCSKE74" ?? "",
       arbitrumGoerli: "BWEYRFH5RWRPMMDNAG5WVMQGGEWRS754R6" ?? "",
       snowtrace: "snowtrace",
-      avalancheFujiTestnet: "snowtrace"
+      avalancheFujiTestnet: "snowtrace",
+      bscTestnet: "CAUR6FE9SVKV8IAEQ6M2C1768T3YIC3KIU"
     },
     customChains: [
       {
@@ -133,7 +139,7 @@ const config: HardhatUserConfig = {
           browserURL: "https://avalanche.routescan.io"
         }
       }
-    ] 
+    ]
   },
 
 };
