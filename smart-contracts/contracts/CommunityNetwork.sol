@@ -466,7 +466,7 @@ contract CommunityNetwork is Ownable {
 
     function checkApplicationStatus(
         address account
-    ) returns (NutritionistApplicationStatus) {
+    ) public view returns (NutritionistApplicationStatus) {
         return nutritionistApplicationStatus[account];
     }
 
