@@ -11,6 +11,7 @@
     "dev:static": "serve ./out",
     "db:push": "drizzle-kit push:mysql",
     "db:gen": "drizzle-kit generate:mysql",
+    "db:pull": "drizzle-kit introspect:mysql",
     "format": "prettier --check --ignore-path .gitignore .",
     "format:fix": "prettier --write --ignore-path .gitignore ."
   },
@@ -35,6 +36,7 @@
     "@thirdweb-dev/storage": "^2.0.9",
     "@types/cors": "^2.8.17",
     "@types/react-transition-group": "^4.4.10",
+    "@wagmi/core": "^1.4.13",
     "@web3-react/core": "6.1.9",
     "add": "^2.0.6",
     "autoprefixer": "10.4.15",

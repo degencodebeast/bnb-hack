@@ -14,7 +14,7 @@
 .env
 # production
 /build
-
+drizzle
 # misc
 .DS_Store
 *.pem

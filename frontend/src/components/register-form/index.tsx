@@ -12,6 +12,7 @@ import {
   useWaitForTransaction,
   useAccount,
   useConfig,
+  useNetwork,
 } from 'wagmi';
 
 import { ethers } from 'ethers';
@@ -51,12 +52,7 @@ import {
 import { generateUsername } from '@/utils';
 
 import { parseEther, parseGwei } from 'viem';
-import {
-  getNetwork,
-  readContract,
-  watchNetwork,
-  writeContract,
-} from '@wagmi/core';
+import { readContract, writeContract } from '@wagmi/core';
 
 const RegisterForm = ({
   isOpen,
@@ -70,7 +66,11 @@ const RegisterForm = ({
     { data: createdUser, isLoading: isCreatingUser, isSuccess },
   ] = useAddUserMutation();
   const { address } = useAccount();
-  const [sendUserToAI] = useSendUserInfoToAIMutation();
+  const { chain } = useNetwork();
+  const chainId = chain?.id;
+  const [sendUserToAI, { data: userAIdataResponse }] =
+    useSendUserInfoToAIMutation();
+  const userAIdata = userAIdataResponse?.data;
   const toast = useToast({
     // duration: 3000,
     // position: 'top',
@@ -120,7 +120,7 @@ const RegisterForm = ({
   const registerUserTx = async () => {
     try {
       setInTx(true);
-      const { hash } = await writeContract({
+      const hash = await writeContract({
         address: communityAddr,
         abi: communityAbi,
         functionName: 'registerUser',
@@ -214,17 +214,19 @@ const RegisterForm = ({
           name: data.fullName,
         });
 
-        // await createUser({
-        //   username: generateUsername(),
-        //   fullName: data?.fullName,
-        //   address: address as `0x${string}`,
-        //   userType: SelectedUserType,
-        //   chainId: 0,
-        // }).unwrap();
-
+        await createUser({
+          username: generateUsername(),
+          fullName: data?.fullName,
+          address: address as `0x${string}`,
+          userType: SelectedUserType,
+          chainId: 0,
+        }).unwrap();
+        sendUserToAI(formDataObject);
         await registerUserTx();
         await new Promise((resolve) => setTimeout(resolve, 10000));
-
+        if (typeof window !== 'undefined') {
+          window.localStorage.setItem('userData', JSON.stringify(userAIdata));
+        }
         //toast();
 
         reset();
