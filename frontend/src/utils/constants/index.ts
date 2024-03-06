@@ -1,5 +1,24 @@
-import { Chain } from "@wagmi/core";
-import {mainnet, bscTestnet} from "@wagmi/core/chains"
+import { Chain } from '@wagmi/core';
+import { mainnet, bscTestnet } from '@wagmi/core/chains';
 
-export const appName = 'REJUVENATE_AI';
-export const communityAddr = '0x763055Ca49aDB6b41Da2522Ab7E2C714601FaD88';
+export const appName = 'REVITALIZE_AI';
+export const communityAddr = '0x3a65168B746766066288B83417329a7F901b5569';
+
+export const shido = {
+  id: 9007,
+  name: 'Shido Testnet',
+  network: 'Shido',
+  nativeCurrency: {
+    decimals: 18,
+    name: 'SHIDO',
+    symbol: 'SHIDO',
+  },
+  rpcUrls: {
+    public: { http: ['https://rpc-testnet-nodes.shidoscan.com'] },
+    default: { http: ['https://rpc-testnet-nodes.shidoscan.com'] },
+  },
+  blockExplorers: {
+    etherscan: { name: 'expolorer', url: 'https://shidoscan.com' },
+    default: { name: 'expolorer', url: 'https://shidoscan.com' },
+  },
+} as const satisfies Chain;
