@@ -2,7 +2,7 @@
 import { Html, Head, Main, NextScript } from 'next/document';
 
 export const metadata: Metadata = {
-  title: 'Rejuvenate AI',
+  title: 'Revitalize AI',
   description: 'We Empower Everyone, Everywhere To LIVE BETTER, LONGER',
 };
 

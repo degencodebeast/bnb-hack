@@ -25,7 +25,8 @@ export const articles = mysqlTable(
       'draft'
     ),
     views: int('views').default(0),
-    authorAddress: varchar('author_address', { length: 100 }).notNull(),
+    //authorAddress: varchar('author_address', { length: 100 }).notNull(),
+    authorAddress: varchar('author_address_idx', { length: 100 }).notNull(),
     createdAt: timestamp('created_at').defaultNow(),
     updatedAt: timestamp('updated_at').onUpdateNow(),
   },
@@ -94,7 +95,8 @@ export const users = mysqlTable(
     password: varchar('password', { length: 255 }),
     email: varchar('email', { length: 255 }).unique(),
     address: varchar('address', { length: 100 }).notNull(),
-    chainId: int('chainId'),
+    //chainId: int('chainId'),
+    chainId: int('chain_id'),
     avatar: varchar('avatar', { length: 255 }),
     userType: mysqlEnum('user_type', ['member', 'nutritionist'])
       .default('member')

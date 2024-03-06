@@ -44,15 +44,15 @@ export const RejuvenateApi = createApi({
         // is result available?
         result?.data
           ? // successful query
-            [
-              ...result?.data.map(({ slug }) => ({
-                type: 'Articles' as const,
-                id: slug,
-              })),
-              { type: 'Articles', id: 'LIST' },
-            ]
+          [
+            ...result?.data.map(({ slug }) => ({
+              type: 'Articles' as const,
+              id: slug,
+            })),
+            { type: 'Articles', id: 'LIST' },
+          ]
           : // an error occurred, but we still want to refetch this query when `{ type: 'Articles', id: 'LIST' }` is invalidated
-            [{ type: 'Articles', id: 'LIST' }],
+          [{ type: 'Articles', id: 'LIST' }],
     }),
     getMealPlans: builder.query<
       Partial<APIResponse<MealPlan[]>>,
@@ -67,15 +67,15 @@ export const RejuvenateApi = createApi({
         // is result available?
         result?.data
           ? // successful query
-            [
-              ...result?.data.map(({ slug }) => ({
-                type: 'MealPlans' as const,
-                id: slug,
-              })),
-              { type: 'MealPlans', id: 'LIST' },
-            ]
+          [
+            ...result?.data.map(({ slug }) => ({
+              type: 'MealPlans' as const,
+              id: slug,
+            })),
+            { type: 'MealPlans', id: 'LIST' },
+          ]
           : // an error occurred, but we still want to refetch this query when `{ type: 'MealPlans', id: 'LIST' }` is invalidated
-            [{ type: 'MealPlans', id: 'LIST' }],
+          [{ type: 'MealPlans', id: 'LIST' }],
     }),
     getFitnessPlans: builder.query<
       Partial<APIResponse<FitnessPlan[]>>,
@@ -90,15 +90,15 @@ export const RejuvenateApi = createApi({
         // is result available?
         result?.data
           ? // successful query
-            [
-              ...result?.data.map(({ slug }) => ({
-                type: 'FitnessPlans' as const,
-                id: slug,
-              })),
-              { type: 'FitnessPlans', id: 'LIST' },
-            ]
+          [
+            ...result?.data.map(({ slug }) => ({
+              type: 'FitnessPlans' as const,
+              id: slug,
+            })),
+            { type: 'FitnessPlans', id: 'LIST' },
+          ]
           : // an error occurred, but we still want to refetch this query when `{ type: 'MealPlans', id: 'LIST' }` is invalidated
-            [{ type: 'FitnessPlans', id: 'LIST' }],
+          [{ type: 'FitnessPlans', id: 'LIST' }],
     }),
     getUsers: builder.query<
       Partial<APIResponse<IUser[]>>,
@@ -113,13 +113,13 @@ export const RejuvenateApi = createApi({
         // is result available?
         result?.data
           ? // successful query
-            [
-              ...result?.data.map(({ id }) => ({
-                type: 'Users' as const,
-                id: id,
-              })),
-              { type: 'Users', id: 'LIST' },
-            ]
+          [
+            ...result?.data.map(({ id }) => ({
+              type: 'Users' as const,
+              id: id,
+            })),
+            { type: 'Users', id: 'LIST' },
+          ]
           : [{ type: 'Users', id: 'LIST' }],
     }),
     getUser: builder.query<
