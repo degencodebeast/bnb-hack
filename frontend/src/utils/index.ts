@@ -6,6 +6,16 @@ import isEmpty from 'just-is-empty';
 export const env = process.env.NODE_ENV || 'development';
 export const IS_DEV = env === 'development';
 
+// import { http, createConfig } from '@wagmi/core';
+// import { mainnet, bscTestnet } from '@wagmi/core/chains';
+
+// export const config = createConfig({
+//   chains: [mainnet, bscTestnet],
+//   transports: {
+//     [mainnet.id]: http(),
+//     [bscTestnet.id]: http(),
+//   },
+// });
 export const generateSlug = (text: string) =>
   slugify(text + '-' + nanoid(6), {
     lower: true,
