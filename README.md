@@ -40,9 +40,9 @@ Here's a breakdown of how it was built:
 
 ## Where we deployed to/contract details
 
-We created and deployed our smart contracts on the Avalanche fuji testnet chain.
+We created and deployed our smart contracts on the Bnb Chain testnet chain.
 
-### Avalanche Testnet
+### Bnb Chain Testnet
 
 1. CommunityNetwork contract 0x763055Ca49aDB6b41Da2522Ab7E2C714601FaD88 - [View source code](https://github.com/degencodebeast/bnb-hack/blob/main/smart-contracts/contracts/CommunityNetwork.sol) | [View on Bnb Chain](https://testnet.bscscan.com/address/0x763055Ca49aDB6b41Da2522Ab7E2C714601FaD88)
 
